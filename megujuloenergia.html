@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megújuló energia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0.5em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding: 3em;
+        }
+
+        .container img {
+            width: 100%;
+        }
+
+        .text-container {
+            padding: 0 2em;
+            line-height: 1.5;
+            text-align: justify;
+            text-indent: 40px;
+        }
+
+        .author {
+            text-align: end;
+            margin-top: 2em;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        button {
+            background-color: green;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                display: block;
+                padding: 1em;
+            }
+
+            .container img {
+                width: 100%;
+                margin-bottom: 1em;
+            }
+
+            .text-container {
+                padding: 0 1em;
+                text-align: left;
+                text-indent: 20px;
+            }
+
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 900px) and (min-width: 601px) {
+            .container {
+                display: grid;
+                grid-template-columns: 1fr;
+                padding: 2em;
+            }
+
+            .container img {
+                width: 100%;
+                margin-bottom: 1em;
+            }
+
+            .text-container {
+                padding: 0 1.5em;
+            }
+
+            .btn-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            button {
+                width: 45%;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                padding: 3em;
+            }
+
+            .container img {
+                width: 100%;
+            }
+
+            .text-container {
+                padding: 0 2em;
+            }
+
+            .btn-container {
+                text-align: center;
+            }
+
+            button {
+                padding: 10px 20px;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="carousel">
+        <img id="carousel-image" src="img/home.png" alt="Kép">
+        <div class="text-controls-wrapper">
+            <div class="text-container">
+                <p id="carousel-text">Ez az első kép leírása.</p>
+            </div>
+            <div class="btn-container">
+                <button onclick="location.href='index.html';">Vissza a főoldalra</button>
+                <button onclick="location.href = 'http://rdml.energiaprojekt.nhely.hu';" target="_blank">Tovább a weboldalunkra</button>
+            
+                <button class="button" id="prev-btn" onclick="prevSlide()" disabled>&larr; Előző</button>
+                <button class="button" id="next-btn" onclick="nextSlide()">Következő &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slides = [
+            {
+                image: "img/home.png",
+                text: "Ez az oldal a mezőgazdaságot forradalmasító drónokat és azok alkalmazását mutatja be, különös figyelmet fordítva az agave termesztésére és a növényvédelemre. Az oldal célja, hogy bemutassa, hogyan segítik a drónok a mezőgazdaságot, különböző előnyökkel, mint a precíziós gazdálkodás, költséghatékonyság és környezettudatosság.A látogatók információkat találhatnak arról, hogy az Agras T50 drónok hogyan támogatják az agave termesztését, valamint egyes mezőgazdasági alkalmazásokat, mint például a légi növényvédelmet. A különböző szekciók bemutatják a drónok előnyeit, és segítenek megérteni azok fontosságát a modern mezőgazdaságban. Az oldal a Bootstrap segítségével reszponzív design-t alkalmaz, így a felhasználók könnyedén hozzáférhetnek a tartalomhoz különböző eszközökön is.Ezen kívül az oldal bemutatja a drónokkal kapcsolatos különböző témákat, mint például a mezőgazdasági biztosításokat és a drónok globális elterjedtségét."
+            },
+            {
+                image: "img/kuldetesek.png",
+                text: "Ez az oldal a drónok küldetéseinek információit tartalmazza, és célja, hogy megjelenítse a különböző repülési küldetések adatait, valamint azok állapotát. Az oldal interaktív funkciókat kínál, mint a keresőmező és a táblázat oszlopainak rendezése, lehetővé téve a felhasználók számára, hogy könnyen áttekintsék és keresgéljenek a küldetésekkel kapcsolatos információk között.A látogatók táblázatos formában láthatják a küldetések dátumát, célját, állapotát, a használt drónt és a felelős vezetőt. Emellett a grafikonok segítségével a küldetések státusza is vizualizálva van, amely egy pie chart formájában jeleníti meg a különböző státuszok eloszlását.A felhasználók könnyen kezelhetik az adatokat a dinamikus keresés és az oszlop szerinti rendezés segítségével. Az oldal a Bootstrap keretrendszert használja, biztosítva a reszponzív designt, így minden eszközön jól olvasható és navigálható."
+            },
+            {
+                image: "img/novenyek.png",
+                text: "Ez az oldal a különböző növények adatait jeleníti meg, beleértve azok érése idejét, optimális hőmérsékleti igényét, vízszükségletét és tápanyagigényét. Az oldal interaktív kereső funkcióval rendelkezik, amely lehetővé teszi a felhasználók számára, hogy könnyedén keresgéljenek a növények között a megadott kategóriák alapján.A növények adatai táblázatos formában jelennek meg, ahol a felhasználók láthatják a növények típusát, érése idejét, vízszükségletét és más fontos jellemzőit. Az adatok a háttérben egy diagramot is generálnak, amely a növények vízszükségletét mutatja egy oszlopdiagram formájában. A diagram segít vizualizálni az egyes növények vízigényét, így a gazdálkodók könnyebben összehasonlíthatják azokat.Az oldal a Chart.js könyvtárat használja a diagram megjelenítéséhez és az adatokat dinamikusan frissíti a backend adatbázisból. Az eszköz reszponzív, biztosítva, hogy minden eszközön optimálisan jelenjen meg."
+            },
+            {
+                image: "img/dronok.png",
+                text: "A drónok mezőgazdasági alkalmazásairól szóló adatokat jeleníti meg. A táblázat segítségével könnyedén hozzáférhetünk az egyes drónok típusaihoz, gyártóikhoz, repülési időtartamukhoz, működési hatótávjukhoz, státuszukhoz, mezőgazdasági vezérlésükhöz és a felelős vezetők nevét. A felhasználók a beépített keresőmező használatával gyorsan megtalálhatják a kívánt adatokat. Az oldal folyamatosan frissíti az adatokat a backend adatbázisból, biztosítva a dinamikus megjelenítést.Ezen kívül az oldal a drónok bemutatását is tartalmazza, részletes információkkal és képekkel, hogy a felhasználók könnyen tájékozódhassanak az egyes modellek jellemzőiről. Az oszlopdiagram segítségével a felhasználók vizuálisan is elemzhetik a drónok eloszlását a különböző megyék szerint. Az oldal teljes mértékben reszponzív, így minden eszközön jól megjelenik, és segít az adatok gyors és egyszerű keresésében."
+            },
+            {
+                image: "img/terulet.png",
+                text: "Ez az oldal a mezőgazdasági területek adatait jeleníti meg, beleértve azok méretét, típusát, a növényeket, valamint GPS koordinátáikat. A felhasználók könnyedén kereshetnek a területek között egy beépített keresőmező segítségével, amely lehetővé teszi, hogy gyorsan megtalálják a kívánt adatokat.A táblázatban szereplő információk közé tartozik a terület mérete hektárban, a megye neve, a terület típusa, a termesztett növény, valamint a terület GPS koordinátái. Az adatokat a backend adatbázisból nyeri az oldal, és dinamikusan jeleníti meg a táblázatban.A felhasználók számára a területek eloszlását egy oszlopdiagram is szemlélteti, amely a területek méretének megoszlását mutatja meg a különböző megyék szerint. A diagram az adatokat a Chart.js könyvtár segítségével jeleníti meg, és a vizualizáció az egyes megyékhez tartozó területek méretét ábrázolja.Az oldal reszponzív, így minden eszközön jól megjelenik, és segít a felhasználóknak a területek adatainak egyszerű és gyors keresésében, valamint az adatok vizuális elemzésében."
+            },
+            {
+                image: "img/jatek.png",
+                text: "Drone Game – A játék célja, hogy egy drónt irányítva összegyűjtsük a kártevőket és elkerüljük a gyümölcsöket, amelyek rossz pontokat jelentenek. A drón folyamatosan mozgatható a képernyőn, és a feladat az, hogy a lehető legtöbb kártevőt összeszedjük, miközben figyelnünk kell a gyümölcsökre is, amelyek csökkenthetik a pontszámot.A játék során a drón különböző kinézetekkel jelenhet meg, ahogy a játék előrehalad (pl. kék, arany), és a pontszám alapján változik a megjelenése. Minél több kártevőt gyűjtünk össze, annál több pontot szerzünk, míg a gyümölcsökkel való ütközés negatívan befolyásolja a játékot. Ha a pontszámunk túl alacsony lesz, a játék véget ér.A felhasználó szabadon irányíthatja a drónt a nyílbillentyűk segítségével, miközben különböző kártevőket és gyümölcsöket talál a pályán. A játék végén a statisztikák megjelennek, és lehetőség van újraindítani a játékot"
+            },
+            {
+                image: "img/nav.png",
+                text: "Ez az oldal egy dinamikus navigációs menüt és sötét módot tartalmazó funkciót valósít meg. A menü a felhasználók számára lehetővé teszi, hogy gyorsan navigáljanak az oldal különböző szekciói között, például a főoldal, drónok, növények, területek, küldetések és rólunk oldalak között. A menü egy egyszerű, de funkcionális oldalsávban jelenik meg, amelyet egy gomb segítségével lehet kinyitni és bezárni.A sötét mód aktiválásával az oldal színeit és megjelenését módosíthatjuk, így a felhasználók kényelmesebben olvashatják a tartalmat gyenge fényviszonyok között. A Sötét mód kapcsolóval egy egyszerű, de hatékony módosítást hajthatunk végre az oldal megjelenésében, amely a háttér és a szövegek színét változtatja. A funkcióval való interakció sima animációval van ellátva, hogy a felhasználói élmény élvezetesebb legyen.A navigációs menü teljes mértékben reszponzív, így az eszköztől függetlenül jól használható, és a felhasználói felület minden eszközön optimálisan jelenik meg."
+            },
+    
+        ];
+    
+        let currentSlide = 0;
+    
+        function updateCarousel() {
+            document.getElementById("carousel-image").src = slides[currentSlide].image;
+            document.getElementById("carousel-text").innerText = slides[currentSlide].text;
+            
+            document.getElementById("prev-btn").disabled = currentSlide === 0;
+            document.getElementById("next-btn").disabled = currentSlide === slides.length - 1;
+        }
+    
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+    
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+    </script>
+</body>
+
+</html>
